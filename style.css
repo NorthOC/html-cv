@@ -16,7 +16,6 @@
 
   --sidebar-horizontal-padding: 0.2in;
 
-  /* XXX: using px for very good precision control */
   --decorator-outer-offset-top: 10px;
   --decorator-outer-offset-left: -5.5px;
   --decorator-border-width: 1px;
@@ -58,7 +57,7 @@ li{
 
 #sidebar{
   float: right;
-  position: relative; /* for disclaimer */
+  position: relative;
   padding: 0.6in var(--sidebar-horizontal-padding);
   background-color: #bdd8ff;
   border: 2px solid #bdd8ff;
@@ -67,9 +66,6 @@ li{
   margin: 8px 8px 0px 0px;
 }
 
-/* main */
-
-/** big title **/
 #title, h1, h2{
   text-transform: uppercase;
 }
@@ -105,7 +101,6 @@ li{
 #main h2{
   position: relative;
   top: var(--row-blocks-padding-top);
-  /* XXX: 0.5px for aligning fx printing */
   left: calc((var(--date-block-width) + var(--decorator-horizontal-margin)));
   font-weight: 400;
   font-size: 11pt;
@@ -113,9 +108,6 @@ li{
 }
 
 #main h2 > i{
-  /* use absolute position to prevent icon's width from misaligning title */
-  /* assigning a fixed width here is no better due to needing to align decorator
-     line too */
   position: absolute;
   left: var(--main-blocks-title-icon-offset-left);
   z-index: 1; /* over decorator line */
@@ -126,7 +118,6 @@ li{
   height: calc(var(--row-blocks-padding-top) * 2);
   position: relative;
   top: calc(-1 * var(--row-blocks-padding-top));
-  /* XXX: 0.5px for aligning fx printing */
   left: calc(-1 * var(--decorator-horizontal-margin));
   display: block;
   border-left: var(--decorator-border);
@@ -136,7 +127,6 @@ li{
   content: ' ';
 }
 
-/**** minor tweaks on the icon fonts ****/
 #main h2 > .fa-graduation-cap{
   left: calc(var(--main-blocks-title-icon-offset-left) - 2pt);
   top: 2pt;
@@ -191,15 +181,6 @@ li{
   border-left: var(--decorator-border);
 }
 
-/*
- * XXX: Use two filled circles to achieve the circle-with-white-border effect.
- * The normal technique of only using one pseudo element and
- * border: 1px solid white; style makes firefox erroneously either:
- * 1) overflows the grayshade background (if no background-clip is set), or
- * 2) shows decorator line which should've been masked by the white border
- *
- */
-
 .decorator::before{
   position: absolute;
   top: var(--decorator-outer-offset-top);
@@ -228,8 +209,6 @@ li{
   margin-bottom: 0.25in;
 }
 
-/***** fine-tunes on the details block where the real juice is *****/
-
 .details{
   flex: 1 0 0;
   padding-left: var(--decorator-horizontal-margin);
@@ -253,8 +232,6 @@ li{
 }
 
 .main-block.concise .details div:not(.concise){
-  /* use padding to work around the fact that margin doesn't affect floated
-     neighboring elements */
   padding: 0.05in 0 0.07in 0;
 }
 
